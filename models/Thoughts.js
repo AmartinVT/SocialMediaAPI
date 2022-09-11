@@ -73,10 +73,6 @@ const thoughtSchema = new Schema (
     }
 )
 
-
-
-
-
 // Virtual schema for getting reaction count by counting the number of valuesw within the reactions field
 thoughtSchema.virtual('reactionCount')
 .get(function() {

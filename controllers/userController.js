@@ -13,7 +13,7 @@ module.exports = {
     User.findOne({ _id: req.params.userId })
       .select('-__v')
       .populate('thoughts')
-      .populte('friends')
+      .populate('friends')
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user found with that ID' })

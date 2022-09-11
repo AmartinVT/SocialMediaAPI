@@ -42,6 +42,6 @@ const seedDB = async () => {
   await User.insertMany(seedUsers);
 };
 
-seedDB().then(() => {
-  mongoose.connection.close();
-})
+// seedDB().then(() => {
+//   mongoose.connection.close();
+// })
