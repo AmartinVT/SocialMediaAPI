@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models/User');
+const { User, Thought } = require('../models');
 
 module.exports = {
   // Requests all thoughts
@@ -14,7 +14,7 @@ module.exports = {
       .select('-__v')
       .then((thought) =>
         !thought
-          ? res.status(404).json({ message: 'No thought foundd with that ID' })
+          ? res.status(404).json({ message: 'No thought found with that ID' })
           : res.json(user)
       )
       .catch((err) => res.status(500).json(err));

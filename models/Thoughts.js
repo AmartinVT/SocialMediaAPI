@@ -17,7 +17,7 @@ const reactionSchema = new Schema (
         },
 
         // Structure for the username field of the database
-        username: {
+        userName: {
             type: String,
             required: true,
         },
@@ -57,7 +57,7 @@ const thoughtSchema = new Schema (
         },
 
         // Structure for the username field of the database
-        username: {
+        userName: {
             type: String,
             required: true,
         },
