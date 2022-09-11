@@ -1,33 +1,33 @@
 const router = require('express').Router();
 
-// Variable of responses from thoughtController.js
+// Variable of responses from userController.js
 const {
-    getThought,
-    getSingleThought,
-    createThought,
-    updateThought,
-    deleteThought,
-    createReaction,
-    deleteReaction
-} = require('../../controllers/thoughtController');
+    getUsers,
+    getSingleUser,
+    createUser,
+    updateUser,
+    deleteUser,
+    addFriend,
+    deleteFriend
+} = require('../../controllers/userController');
 
 // GET and POST all route
 router.route('/')
-    .get(getThought)
-    .post(createThought);
+    .get(getUsers)
+    .post(createUser);
 
 // GET and PUT and DELETE by ID route
-router.route('/:thoughtId')
-    .get(getSingleThought)
-    .put(updateThought)
-    .delete(deleteThought);
+router.route('/:userId')
+    .get(getSingleUser)
+    .put(updateUser)
+    .delete(deleteUser);
 
-//  POST reaction route
-router.route('/:thoughtId/reactions')
-    .post(createReaction);
+//  POST friend route
+router.route('/:userId/friends')
+    .post(addFriend);
 
-// DELETE reaction route
-router.route('/:thoughtId/reactions/:reactionId')
-    .delete(deleteReaction);
+// DELETE friend route
+router.route('/:userId/friends/:userId')
+    .delete(deleteFriend);
 
 module.exports = router;
