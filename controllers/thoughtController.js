@@ -20,12 +20,23 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-//   // Create a new thought
-//   createThought(req, res) {
-//     Thought.create(req.body)
-//       .then((dbUserData) => res.json(dbUserData))
-//       .catch((err) => res.status(500).json(err));
-//   },
+  // Create a thought
+  createThought(req, res) {
+    Thought.create(req.body)
+        .then(({ _id }) => {
+            return User.findOneAndUpdate(
+                { _id: req.body.userID },
+                { $push: {thoughts: _id} },
+                { new: true }
+            );
+        })
+        .then((thought) => 
+        !thought
+            ? res.status(404).json({ message: 'No user found with this ID!'})
+            : res.json(thought)
+            )
+            .catch((err) => res.status(500).json(err));
+  },
 
   // Update one thought
   updateThought(req, res) {
@@ -40,7 +51,7 @@ module.exports = {
           : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
-    },
+   },
 
   //Add one friend
   addFriend(req, res) {
