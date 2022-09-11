@@ -1,10 +1,10 @@
-const { User, Thought } = require('../models/User');
+const { User, Thoughts } = require('../models');
 
 module.exports = {
   // Requests all users
   getUsers(req, res) {
-    User.find()
-      .then((users) => res.json(users))
+    User.find({})
+      .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
   
